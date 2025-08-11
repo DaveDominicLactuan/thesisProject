@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>PDF Generator & Multi-Page Preview</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Content to turn into PDF -->
+  <div #pdfContent id="pdf-content" class="pdf-content">
+    <h2>Sample Multi-page Invoice</h2>
+    <p>Below is a long list to create multiple PDF pages.</p>
+    <ul>
+      <li *ngFor="let i of [].constructor(50); let idx = index">
+        Item {{ idx + 1 }} - Description for invoice
+      </li>
+    </ul>
+  </div>
+
+  <!-- Buttons -->
+  <ion-button expand="block" (click)="generatePdf()">Generate & Preview</ion-button>
+  <ion-button expand="block" (click)="downloadPdf()">Download</ion-button>
+
+  <!-- PDF Preview -->
+  <div id="pdf-preview" class="pdf-preview"></div>
+
+</ion-content>

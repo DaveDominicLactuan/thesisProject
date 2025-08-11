@@ -1,0 +1,85 @@
+<!-- 📸 Live Camera Preview Container -->
+<div class="camera-live">
+    <!-- 🎥 Live Camera Feed -->
+  <video #video autoplay muted playsinline class="camera-feed"></video>
+
+  <!-- 🖼️ Captured Image Preview Overlay -->
+  <div *ngIf="imagePreview" class="image-preview">
+    <img [src]="imagePreview" />
+    <button class="close-preview-btn" (click)="closePreview()">✖</button>
+  </div>
+
+  <!-- 🎨 Hidden Canvas for Capturing -->
+  <canvas #canvas hidden></canvas>
+
+
+  <!-- 🔝 Top Bar -->
+  <div class="top-bar">
+    <button class="top-btn left" (click)="goToHomePage()">✖</button>
+    <button class="top-btn right" (click)="goToFeedBackPage()">↻</button>
+  </div>
+
+  <!-- 🔽 Bottom Bar -->
+  <div class="bottom-bar">
+    <!-- Top Section (Buttons + Face Detection) -->
+    <div class="bottom-top-row">
+      <!-- <button class="function-btn" (click)="filterThumbnails('all')">📷 All</button>
+      <button class="function-btn" (click)="filterThumbnails('machine')">🤖 Machine</button> -->
+      <!-- <button class="function-btn" (click)="filterThumbnails('user')">👤 User</button> -->
+       <!-- <div class="spinner-container" (click)="goToFeedBackPage()">
+  <div class="rotating-ring" *ngIf="photosProcessed < photosTaken"></div>
+  <div class="center-value">
+    {{ photosProcessed }}/{{ photosTaken }}
+  </div>
+  <div 
+    class="red-circle"
+    [ngClass]="{
+      'green': photosProcessed === photosTaken,
+      'red': photosProcessed < photosTaken
+    }">
+  </div>
+</div> -->
+
+<div class="spinner-container-rect" (click)="goToFeedBackPage()">
+  <div class="rotating-ring-rect" *ngIf="photosProcessed < photosTaken"></div>
+  <div class="center-value-rect">
+    {{ photosProcessed }}/{{ photosTaken }}
+  </div>
+  <div 
+    class="red-circle"
+    [ngClass]="{
+      'green': photosProcessed === photosTaken,
+      'red': photosProcessed < photosTaken
+    }">
+  </div>
+</div>
+
+
+      <!-- 👇 Face Detection Status Indicator -->
+      <div class="face-status-indicator">
+        <ng-container *ngIf="faceDetected; else noFace">
+          <img src="assets/icons/face-detected.png" alt="Face Detected" width="28" height="28" />
+          <div class="face-label">✅ Face Detected</div>
+        </ng-container>
+        <ng-template #noFace>
+          <img src="assets/icons/no-face.png" alt="No Face Detected" width="28" height="28" />
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Bottom Section (Shutter + Thumbnails + Settings) -->
+    <div class="bottom-bottom-row">
+      <div *ngIf="capturedImages.length === 0" class="thumbnail-placeholder">📸</div>
+
+      <div *ngIf="capturedImages.length > 0" class="thumbnail-scroll">
+        <img *ngFor="let img of capturedImages" [src]="img" class="thumbnail" />
+      </div>
+
+      <!-- 🔘 Capture Button -->
+      <button class="shutter-btn" (click)="takeManualPicture()"></button>
+
+      <!-- ⚙️ Settings Button -->
+      <button class="side-btn" (click)="toggleCamera()">🔁</button>
+    </div>
+  </div>
+</div>
