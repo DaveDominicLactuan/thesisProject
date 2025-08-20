@@ -1,6 +1,5 @@
 
 import { Component, ElementRef, ViewChild,OnInit } from '@angular/core';
-
 import html2pdf from 'html2pdf.js';
 import * as pdfjsLib from 'pdfjs-dist';
 const pdfjsWorker = require('pdfjs-dist/build/pdf.worker.entry');
@@ -14,7 +13,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
   standalone: false
 })
 export class PdfPageTest03Page {
-  @ViewChild('pdfContent', { static: false }) pdfContent!: ElementRef;
+  @ViewChild('pdfContent') pdfContent!: ElementRef;
   private pdfBlob: Blob | null = null;
 
   constructor() {}
@@ -30,7 +29,7 @@ export class PdfPageTest03Page {
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
-    // Generate PDF as Blob
+    // Generate PDF Blob
     this.pdfBlob = await html2pdf().from(element).set(options).outputPdf('blob');
 
     if (this.pdfBlob) {
@@ -41,7 +40,6 @@ export class PdfPageTest03Page {
   async previewPdfAllPages(blob: Blob) {
     const previewDiv = document.getElementById('pdf-preview');
     if (!previewDiv) return;
-
     previewDiv.innerHTML = ''; // Clear old preview
 
     const pdfData = new Uint8Array(await blob.arrayBuffer());
@@ -58,7 +56,7 @@ export class PdfPageTest03Page {
       await page.render({ canvasContext: context, viewport }).promise;
       previewDiv.appendChild(canvas);
 
-      // Optional spacing between pages
+      // Space between pages
       const spacer = document.createElement('div');
       spacer.style.height = '20px';
       previewDiv.appendChild(spacer);
