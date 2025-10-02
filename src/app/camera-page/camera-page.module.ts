@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
 
 import { CameraPagePageRoutingModule } from './camera-page-routing.module';
-
 import { CameraPagePage } from './camera-page.page';
+
 
 @NgModule({
   imports: [
@@ -17,4 +16,8 @@ import { CameraPagePage } from './camera-page.page';
   ],
   declarations: [CameraPagePage]
 })
-export class CameraPagePageModule {}
+export class CameraPagePageModule {
+  constructor() {
+    console.log('CameraPagePageModule is being evaluated');
+  }
+}

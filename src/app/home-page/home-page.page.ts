@@ -81,23 +81,23 @@ this.lastName = profile['lastName'];
 
   goTestCameraPage() {
     this.router.navigate(['/custom-camera-test']);
-    console.log('camera page');
+    console.log('custom camera');
   }
 
   gopdfPage() {
     this.router.navigate(['/pdf-page-test']);
-    console.log('camera page');
+    console.log('pdf page');
   }
 
   gopdfPage2() {
     this.router.navigate(['/pdf-page-test02']);
-    console.log('camera page');
+    console.log('pdf 2 page');
   }
 
 
   gopdfPage3() {
     this.router.navigate(['/pdf-page-test03']);
-    console.log('camera page');
+    console.log('pdf 3 page');
   }
 
 

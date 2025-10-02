@@ -54,19 +54,6 @@
   </div>
 </div>
 
-
-      <!-- 👇 Face Detection Status Indicator -->
-      <div class="face-status-indicator">
-        <ng-container *ngIf="faceDetected; else noFace">
-          <img src="assets/icons/face-detected.png" alt="Face Detected" width="28" height="28" />
-          <div class="face-label">✅ Face Detected</div>
-        </ng-container>
-        <ng-template #noFace>
-          <img src="assets/icons/no-face.png" alt="No Face Detected" width="28" height="28" />
-        </ng-template>
-      </div>
-    </div>
-
     <!-- Bottom Section (Shutter + Thumbnails + Settings) -->
     <div class="bottom-bottom-row">
       <div *ngIf="capturedImages.length === 0" class="thumbnail-placeholder">📸</div>
@@ -76,10 +63,18 @@
       </div>
 
       <!-- 🔘 Capture Button -->
-      <button class="shutter-btn" (click)="takeManualPicture()"></button>
+      <button class="shutter-btn" (click)="takePicture()"></button>
 
       <!-- ⚙️ Settings Button -->
       <button class="side-btn" (click)="toggleCamera()">🔁</button>
+    </div>
+
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+
+    <div *ngIf="lastPrediction">
+      <p>Type: {{ lastPrediction.type }}</p>
+      <p>Shape: {{ lastPrediction.shape }}</p>
+      <p>Severity: {{ lastPrediction.severity }}</p>
     </div>
   </div>
 </div>

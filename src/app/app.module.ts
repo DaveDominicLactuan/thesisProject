@@ -25,6 +25,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase), // ✅ Firebase init for NgModules
     AngularFirestoreModule, // ✅ Firestore module
     HttpClientModule, // Uncomment if you need HTTP client
-  
+    IonicStorageModule.forRoot()
     
   ],
   providers: [
