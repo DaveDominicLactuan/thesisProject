@@ -1,7 +1,8 @@
 .home-page {
   // --background: #fff;
+  --background-color: #5797a0;
   // --background-color: #008799;
-  --background: #008799;
+  // --background: #008799;
 
   .greeting {
     display: flex;
@@ -34,8 +35,8 @@
  .main-buttons {
   display: flex;
   justify-content: space-between;
-  padding: 16px;
-  gap: 10px;
+  padding: 5px;
+  gap: 5px;
 
   .big-btn {
     display: flex;

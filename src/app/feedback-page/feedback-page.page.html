@@ -55,6 +55,13 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label for="dropdown2">Direction</label>
+        <select id="dropdown2" [(ngModel)]="dropdown2" class="input-item">
+          <option *ngFor="let option of dropdownOptionsDirection" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+
 
       <div class="form-group">
   <label for="extraText">Detection Info</label>

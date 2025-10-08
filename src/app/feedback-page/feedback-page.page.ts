@@ -20,6 +20,7 @@ export class FeedbackPagePage implements OnInit {
   message: string = '';
   selectedImage: string = '';
 selectedImageTitle: string = '';
+isFormFocused: boolean = false;
 formDataMap: {
   [image: string]: {
     title: string;

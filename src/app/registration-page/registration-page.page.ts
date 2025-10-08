@@ -231,4 +231,10 @@ togglePasswordVisibility() {
     console.log('Navigating to Sign Up page');
   }
 
+  onBack() {
+  this.selectedRole = null; // Deselect role and show both options
+  // Optionally, go back in navigation:
+  // this.navCtrl.back(); // Uncomment if you want to navigate back
+}
+
 }
